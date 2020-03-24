@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import MD5 from 'crypto-js/md5';
 
 function ArticleList(props) {
   const { articles } = props;
@@ -15,7 +16,7 @@ function ArticleList(props) {
   return (
     <div className="ArticleList">
       {articles.map(article => (
-        <h2>{article.title}</h2>
+        <h2 key={MD5(article.slug)}>{article.title}</h2>
       ))}
     </div>
   );
